@@ -44,7 +44,6 @@ main {
 .main_menu {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: stretch;
     min-width: 15%;
     background-color: #FFEDE1;
@@ -131,4 +130,17 @@ button:hover {
 button:active {
     border-color: #f5d0b8;
     background-color: transparent;
+}
+
+.home_body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+}
+
+.chart_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
 }

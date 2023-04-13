@@ -5,7 +5,7 @@ import {Chart} from 'highcharts-vue';
 <script>
 export default {
   props: {
-
+    imported_data: Array,
   },
   data() {
     return {
@@ -13,6 +13,7 @@ export default {
         chart: {
           type: 'item'
         },
+        title: "",
         series: [{
           name: 'Representatives',
           keys: ['name', 'y', 'color', 'label'],
@@ -39,6 +40,9 @@ export default {
       }],
       }
     };
+  },
+  mounted() {
+    this.chartOptions.series[0].data = this.imported_data;
   },
   methods: {
     
