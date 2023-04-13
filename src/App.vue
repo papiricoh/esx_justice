@@ -1,5 +1,5 @@
 <script setup>
-
+import parliamentChart from './components/parliamentChart.vue';
 </script>
 
 <script>
@@ -9,7 +9,7 @@ export default {
   },
   data() {
     return {
-      message: "Este es un mensaje desde el componente Vue.",
+      loading: false,
     };
   },
   methods: {
@@ -20,8 +20,9 @@ export default {
 
 <template>
   <main>
-    <div>
-
+    <div v-if="loading"></div>
+    <div v-else>
+      <parliamentChart></parliamentChart>
     </div>
   </main>
 </template>
