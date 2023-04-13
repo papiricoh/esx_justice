@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body > div {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+}
+
+.palette {
+    color: #0E1C36;
+    color: #AFCBFF;
+    color: #D7F9FF;
+    color: #FFEDE1;
+    color: #F9FBF2;
+}
+
+.main {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    height: 100%;
+    width: 100%;
+}
+
+.main_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    min-width: 15%;
+    background-color: #FFEDE1;
+}
+
+.main_display {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 85%;
+    overflow-y: scroll;
+}
+
+.menu_list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu_list_item {
+    background-color: #f5d0b8;
+    padding: 1rem;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .4rem;
+    transition: .4s;
+}
+
+
+.menu_list_item:hover {
+    background-color: #dabaa4;
+    transition: .4s;
+}
+
+.menu_list_item:active {
+    background-color: #f5d0b8;
+    transition: .4s;
+}
+
+
+.menu_list_item_active {
+    background-color: #7e6f64;
+    color: white;
+}
+
+.home_header {
+    background-color: #fff9f6;
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.244);
+    padding: 1.4rem;
+}
+
+.home_header > div:nth-child(1) {
+    font-size: xx-large;
+}
+
+.home_header_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-size: 1rem;
+    padding: .4rem 1rem;
+    background-color: transparent;
+    border-radius: .4rem;
+    border: 2px solid #f5d0b8;
+}
+
+button:hover {
+    border-color: #dabaa4;
+    background-color: #f5d0b8;
+}
+
+
+button:active {
+    border-color: #f5d0b8;
+    background-color: transparent;
+}

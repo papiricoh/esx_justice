@@ -17,14 +17,11 @@ export default {
           name: 'Representatives',
           keys: ['name', 'y', 'color', 'label'],
           data: [
-              ['The Left', 39, '#CC0099', 'DIE LINKE'],
-              ['Social Democratic Party', 206, '#EE0011', 'SPD'],
-              ['Alliance 90/The Greens', 118, '#448833', 'GRÜNE'],
-              ['Free Democratic Party', 92, '#FFCC00', 'FDP'],
-              ['Christian Democratic Union', 152, '#000000', 'CDU'],
-              ['Christian Social Union in Bavaria', 45, '#3366CC', 'CSU'],
-              ['Alternative for Germany', 83, '#3399FF', 'AfD'],
-              ['South Schleswig Voters\' Association', 1, '#000099', 'SSW']
+              ['Roberts Party', 39, '#CC0099', 'New day'],
+              ['Socialist Party', 89, '#E4FF27', 'SOL'],
+              ['Center Party', 234, '#052060', 'KILO'],
+              ['Conservatives', 130, '#FF5523', 'CON'],
+              ['Fascist Party', 89, '#000000', 'FAL'],
           ],
           dataLabels: {
               enabled: true,
