@@ -18,11 +18,6 @@ export default {
           name: 'Representatives',
           keys: ['name', 'y', 'color', 'label'],
           data: [
-              ['Roberts Party', 39, '#CC0099', 'New day'],
-              ['Socialist Party', 89, '#E4FF27', 'SOL'],
-              ['Center Party', 234, '#052060', 'KILO'],
-              ['Conservatives', 130, '#FF5523', 'CON'],
-              ['Fascist Party', 89, '#000000', 'FAL'],
           ],
           dataLabels: {
               enabled: true,

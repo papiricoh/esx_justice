@@ -111,6 +111,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1.4rem;
 }
 
 button {
@@ -141,6 +142,78 @@ button:active {
 
 .chart_container {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.senate_page {
+    display: flex;
+    flex-direction: column;
     align-items: stretch;
+    padding: 1.6rem;
+    gap: 1rem;
+}
+
+.parties_seccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.party_card {
+    height: 22rem;
+    width: 15rem;
+    background-color: #faeae0;
+    border-radius: .4rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.283);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: .4rem 1.4rem;
+}
+
+.party_table {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .4rem;
+}
+
+.party_table > table > tr > th {
+    border-bottom: 1px solid black;
+}
+
+.pending_laws_table {
+    border-radius: .4rem;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.232);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+}
+
+.pending_laws_table > table {
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+}
+
+.pending_laws_table_row:nth-child(2n) {
+    background-color: #faeae0;
+}
+
+.pending_laws_table_row:nth-child(1) {
+    background-color: #fffaf7;
+}
+
+.pending_laws_table_row > th, .pending_laws_table_row > td {
+    padding: 1rem 2rem;
 }
