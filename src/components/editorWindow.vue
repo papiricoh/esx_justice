@@ -5,6 +5,9 @@
     <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">H3</button>
     <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">Bold</button>
     <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">Italic</button>
+    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">Italic</button>
+    <button @click="editor.chain().focus().toggleBulletList().run()">Bullet List</button>
+    <button @click="editor.chain().focus().toggleOrderedList().run()">Ordered List</button>
   </div>
   <editor-content :editor="editor" class="editor-container"  />
 </template>
@@ -17,6 +20,9 @@ import Text from '@tiptap/extension-text'
 import Heading from '@tiptap/extension-heading'
 import Bold from '@tiptap/extension-bold'
 import Italic from '@tiptap/extension-italic'
+import ListItem from '@tiptap/extension-list-item'
+import BulletList from '@tiptap/extension-bullet-list'
+import OrderedList from '@tiptap/extension-ordered-list'
 
 export default {
   components: {
@@ -41,10 +47,14 @@ export default {
         }),
         Bold,
         Italic,
+        ListItem,
+        BulletList,
+        OrderedList,
       ],
     })
   },
-
+  methods: {
+  },
   beforeUnmount() {
     this.editor.destroy()
   },
@@ -55,7 +65,11 @@ export default {
 .toolbar {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  padding: .4rem;
+  border: 3px solid black;
+  border-bottom: 0;
+  border-top-left-radius: .4rem;
+  border-top-right-radius: .4rem;
 }
 
 button {
@@ -66,10 +80,11 @@ button.is-active {
   font-weight: bold;
 }
 .editor-container {
-  height: 300px; /* Ajusta este valor a la altura deseada */
+  height: 300px;
   overflow-y: auto;
-  border: 2px solid black;
-  border-radius: .4rem;
+  border: 3px solid black;
+  border-bottom-left-radius: .4rem;
+  border-bottom-right-radius: .4rem;
   padding: 1rem;
 }
 </style>
