@@ -137,6 +137,15 @@ export default {
           { name: "Jonnathan Gale", role: "Senator"},
         ]},
       ],
+      pending_laws: [
+        { title: "Minecraft Bill", type: "Bill", votes: [
+          { senator_id: "steam:2039120", vote: "for"},
+          { senator_id: "steam:21382918", vote: "neutral"},
+          { senator_id: "steam:2033120", vote: "for"},
+          { senator_id: "steam:2439120", vote: "neutral"},
+          { senator_id: "steam:2529120", vote: "against"},
+        ], time: 1681442485000},
+      ],
     };
   },
   methods: {
@@ -184,7 +193,7 @@ export default {
             
           </div>
         </div>
-        <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
+        <senatePage v-if="page == 'senate'" class="senate_page" :pending_laws="pending_laws" :player="player" :parties="parties"></senatePage>
       </div>
     </div>
   </main>

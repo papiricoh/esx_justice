@@ -6,26 +6,26 @@ import voteUI from './voteUI.vue';
 export default {
   props: {
     parties: Array,
-    player: Object
+    player: Object,
+    pending_laws: Array, //get it with fetch
   },
   data() {
     return {
-      pending_laws: [
-        { title: "Minecraft Bill", type: "Bill", votes: [
-          { senator_id: "steam:2039120", vote: "for"},
-          { senator_id: "steam:21382918", vote: "neutral"},
-          { senator_id: "steam:2033120", vote: "for"},
-          { senator_id: "steam:2439120", vote: "neutral"},
-          { senator_id: "steam:2529120", vote: "against"},
-        ], time: 1681442485000},
-      ],
+      
     };
   },
   mounted() {
     
   },
   methods: {
-    
+    updatePendingLaws(law) {
+      for (let index = 0; index < this.pending_laws.length; index++) {
+        if(this.pending_laws[index].title == law.title) {
+          this.pending_laws[index] = law;
+          console.log(law);
+        }
+      }
+    }
   },
   components: {
     
@@ -47,7 +47,7 @@ export default {
         <tr class="pending_laws_table_row" v-for="law in pending_laws">
           <td>{{law.title}}</td>
           <td>{{law.type}}</td>
-          <td><voteUI :player="player" :law="law"></voteUI></td>
+          <td><voteUI @updatePendingLaws="updatePendingLaws($event)" :player="player" :law="law"></voteUI></td>
           <td>{{new Date(law.time).toDateString()}}</td>
         </tr>
       </table>

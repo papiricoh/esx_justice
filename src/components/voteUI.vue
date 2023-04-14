@@ -49,11 +49,13 @@ export default {
         }
       }
       this.votes = this.calculate_votes(this.law);
+      this.$emit('updatePendingLaws', this.law);
     },
     addVote(vote_type) {
       this.law.votes[this.law.votes.length] = { senator_id: this.player.id, vote: vote_type };
       this.votes = this.calculate_votes(this.law);
       this.personal_vote = vote_type;
+      this.$emit('updatePendingLaws', this.law);
     }
   },
   components: {
@@ -65,10 +67,13 @@ export default {
 <template>
   <div class="votes_buttons">
     <button v-if="personal_vote == 'for'" class="vote_button" @click="removeVote()">{{votes.for}}</button>
-    <button v-else @click="addVote('for')">{{votes.for}}</button>
+    <button v-else-if="personal_vote == null" @click="addVote('for')">{{votes.for}}</button>
+    <button v-else>{{votes.for}}</button>
     <button v-if="personal_vote == 'neutral'" class="vote_button" @click="removeVote()">{{votes.neutral}}</button>
-    <button v-else @click="addVote('neutral')">{{votes.neutral}}</button>
+    <button v-else-if="personal_vote == null" @click="addVote('neutral')">{{votes.neutral}}</button>
+    <button v-else>{{votes.neutral}}</button>
     <button v-if="personal_vote == 'against'" class="vote_button" @click="removeVote()">{{votes.against}}</button>
-    <button v-else @click="addVote('against')">{{votes.against}}</button>
+    <button v-else-if="personal_vote == null" @click="addVote('against')">{{votes.against}}</button>
+    <button v-else>{{votes.against}}</button>
   </div>
 </template>
