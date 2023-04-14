@@ -12,6 +12,8 @@ export default {
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
+          { senator_id: "steam:2039420", vote: "for"},
+          { senator_id: "steam:2033120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
         ], time: 1681442485000},
@@ -22,20 +24,7 @@ export default {
     
   },
   methods: {
-    calculate_votes(law) {
-      let new_law = { for: 0, neutral: 0, against: 0 }
-
-      for (let index = 0; index < law.votes.length; index++) {
-        if(law.votes[index].vote == "for") {
-          new_law.for = new_law.for + 1;
-        }else if(law.votes[index].vote == "against") {
-          new_law.against = new_law.against + 1;
-        }else {
-          new_law.neutral = new_law.neutral + 1;
-        }
-      }
-      return new_law;
-    },
+    
   },
   components: {
     
@@ -57,7 +46,7 @@ export default {
         <tr class="pending_laws_table_row" v-for="law in pending_laws">
           <td>{{law.title}}</td>
           <td>{{law.type}}</td>
-          <td><voteUI :votes="calculate_votes(law)"></voteUI></td>
+          <td><voteUI :law="law"></voteUI></td>
           <td>{{new Date(law.time).toDateString()}}</td>
         </tr>
       </table>
