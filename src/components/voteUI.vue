@@ -43,6 +43,17 @@ export default {
     removeVote() {
       this.personal_vote = null;
       //remove from array vote and call calculate votes
+      for (let index = 0; index < this.law.votes.length; index++) {
+        if (this.law.votes[index].senator_id == this.player.id) {
+          this.law.votes.splice(index, 1);
+        }
+      }
+      this.votes = this.calculate_votes(this.law);
+    },
+    addVote(vote_type) {
+      this.law.votes[this.law.votes.length] = { senator_id: this.player.id, vote: vote_type };
+      this.votes = this.calculate_votes(this.law);
+      this.personal_vote = vote_type;
     }
   },
   components: {
@@ -54,8 +65,10 @@ export default {
 <template>
   <div class="votes_buttons">
     <button v-if="personal_vote == 'for'" class="vote_button" @click="removeVote()">{{votes.for}}</button>
-    <button v-else>{{votes.for}}</button>
-    <button>{{votes.neutral}}</button>
-    <button>{{votes.against}}</button>
+    <button v-else @click="addVote('for')">{{votes.for}}</button>
+    <button v-if="personal_vote == 'neutral'" class="vote_button" @click="removeVote()">{{votes.neutral}}</button>
+    <button v-else @click="addVote('neutral')">{{votes.neutral}}</button>
+    <button v-if="personal_vote == 'against'" class="vote_button" @click="removeVote()">{{votes.against}}</button>
+    <button v-else @click="addVote('against')">{{votes.against}}</button>
   </div>
 </template>

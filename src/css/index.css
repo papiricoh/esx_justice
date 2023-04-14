@@ -264,7 +264,17 @@ button:active {
     color: black;
 }
 
-.vote_button {
+.vote_button:nth-child(1) {
     background-color: rgb(9, 97, 9);
+    color: white;
+}
+
+.vote_button:nth-child(2) {
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+
+.vote_button:nth-child(3) {
+    background-color: rgb(117, 0, 0);
     color: white;
 }

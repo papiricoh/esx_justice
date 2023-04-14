@@ -13,7 +13,7 @@ export default {
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
-          { senator_id: "steam:21382918", vote: "for"},
+          { senator_id: "steam:21382918", vote: "neutral"},
           { senator_id: "steam:2033120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
