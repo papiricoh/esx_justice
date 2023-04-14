@@ -96,7 +96,7 @@ export default {
       <div class="textEditorWindow">
         <h2 style="text-align: center;">Law editor</h2>
         <div class="editorWindow">
-          <editorWindow></editorWindow>
+          <editorWindow v-model="content"></editorWindow>
         </div>
       </div>
     </div>

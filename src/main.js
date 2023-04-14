@@ -4,8 +4,9 @@ import Highcharts from 'highcharts'
 import itemSeries from 'highcharts/modules/item-series'
 import App from './App.vue'
 import store from './store';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'summernote/dist/summernote-lite.min.css';
+import $ from 'jquery';
+
+window.$ = window.jQuery = $;
 
 
 itemSeries(Highcharts);
