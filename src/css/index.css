@@ -214,6 +214,10 @@ button:active {
     background-color: #fffaf7;
 }
 
+.pending_laws_table_row > th:nth-child(1), .pending_laws_table_row > td:nth-child(1) {
+    width: 40%;
+}
+
 .pending_laws_table_row > th, .pending_laws_table_row > td {
     padding: 1rem 2rem;
 }
@@ -224,14 +228,38 @@ button:active {
     gap: .6rem;
 }
 
+.votes_buttons > button {
+    cursor: pointer;
+}
+
 .votes_buttons > button:nth-child(1) {
     border-color: rgb(3, 104, 3);
+}
+
+.votes_buttons > button:nth-child(1):hover {
+    background-color: rgba(152, 195, 152, 0.761);
+    color: white;
 }
 
 .votes_buttons > button:nth-child(2) {
     border-color: rgb(110, 110, 110);
 }
 
+.votes_buttons > button:nth-child(2):hover {
+    background-color: rgba(91, 91, 91, 0.561);
+    color: white;
+}
+
 .votes_buttons > button:nth-child(3) {
     border-color: rgb(104, 3, 3);
+}
+
+.votes_buttons > button:nth-child(3):hover {
+    background-color: rgba(154, 25, 25, 0.683);
+    color: white;
+}
+
+.votes_buttons > button:nth-child(n):active {
+    background-color: transparent;
+    color: black;
 }
