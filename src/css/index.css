@@ -285,3 +285,33 @@ button:active {
     justify-content: space-between;
     align-items: center;
 }
+
+.textEditor {
+    background-color: rgba(0, 0, 0, 0.232);
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textEditorWindow {
+    margin: 4rem;
+    border-radius: .5rem;
+    padding: 1rem;
+    background-color: white;
+    min-height: 32rem;
+    max-height: 70%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.editorWindow {
+    height: 90%;
+}

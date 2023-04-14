@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      textEditorOn: false,
+      textEditorOn: true,
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
@@ -92,8 +92,13 @@ export default {
         </div>
       </div>
     </div>
-    <div v-if="textEditorOn">
-      
+    <div v-if="textEditorOn" class="textEditor">
+      <div class="textEditorWindow">
+        <h2 style="text-align: center;">Law editor</h2>
+        <div class="editorWindow">
+          <editorWindow></editorWindow>
+        </div>
+      </div>
     </div>
   </div>
 </template>
