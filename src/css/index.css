@@ -120,6 +120,7 @@ button {
     background-color: transparent;
     border-radius: .4rem;
     border: 2px solid #f5d0b8;
+    cursor: pointer;
 }
 
 button:hover {
@@ -277,4 +278,10 @@ button:active {
 .vote_button:nth-child(3) {
     background-color: rgb(117, 0, 0);
     color: white;
+}
+
+.senate_page_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
