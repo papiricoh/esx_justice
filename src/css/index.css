@@ -263,3 +263,8 @@ button:active {
     background-color: transparent;
     color: black;
 }
+
+.vote_button {
+    background-color: rgb(9, 97, 9);
+    color: white;
+}

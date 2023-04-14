@@ -6,14 +6,17 @@
 export default {
   props: {
     law: Object, // { for: 0, neutral: 0, against: 0 }
+    player: Object
   },
   data() {
     return {
       votes: {},
+      personal_vote: null,
     };
   },
   mounted() {
     this.votes = this.calculate_votes(this.law);
+    this.check_vote();
   },
   methods: {
     calculate_votes(law) {
@@ -30,6 +33,17 @@ export default {
       }
       return new_law;
     },
+    check_vote() {
+      for (let index = 0; index < this.law.votes.length; index++) {
+        if (this.player.id == this.law.votes[index].senator_id) {
+          this.personal_vote = this.law.votes[index].vote;
+        }
+      }
+    },
+    removeVote() {
+      this.personal_vote = null;
+      //remove from array vote and call calculate votes
+    }
   },
   components: {
     
@@ -39,7 +53,8 @@ export default {
 
 <template>
   <div class="votes_buttons">
-    <button>{{votes.for}}</button>
+    <button v-if="personal_vote == 'for'" class="vote_button" @click="removeVote()">{{votes.for}}</button>
+    <button v-else>{{votes.for}}</button>
     <button>{{votes.neutral}}</button>
     <button>{{votes.against}}</button>
   </div>

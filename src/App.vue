@@ -184,7 +184,7 @@ export default {
             
           </div>
         </div>
-        <senatePage v-if="page == 'senate'" class="senate_page" :parties="parties"></senatePage>
+        <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
       </div>
     </div>
   </main>

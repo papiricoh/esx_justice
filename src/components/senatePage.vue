@@ -6,13 +6,14 @@ import voteUI from './voteUI.vue';
 export default {
   props: {
     parties: Array,
+    player: Object
   },
   data() {
     return {
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
-          { senator_id: "steam:2039420", vote: "for"},
+          { senator_id: "steam:21382918", vote: "for"},
           { senator_id: "steam:2033120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
@@ -46,7 +47,7 @@ export default {
         <tr class="pending_laws_table_row" v-for="law in pending_laws">
           <td>{{law.title}}</td>
           <td>{{law.type}}</td>
-          <td><voteUI :law="law"></voteUI></td>
+          <td><voteUI :player="player" :law="law"></voteUI></td>
           <td>{{new Date(law.time).toDateString()}}</td>
         </tr>
       </table>
