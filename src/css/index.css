@@ -217,3 +217,21 @@ button:active {
 .pending_laws_table_row > th, .pending_laws_table_row > td {
     padding: 1rem 2rem;
 }
+
+.votes_buttons {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.votes_buttons > button:nth-child(1) {
+    border-color: rgb(3, 104, 3);
+}
+
+.votes_buttons > button:nth-child(2) {
+    border-color: rgb(110, 110, 110);
+}
+
+.votes_buttons > button:nth-child(3) {
+    border-color: rgb(104, 3, 3);
+}

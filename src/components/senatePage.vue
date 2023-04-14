@@ -1,5 +1,5 @@
 <script setup>
-import {Chart} from 'highcharts-vue';
+import voteUI from './voteUI.vue';
 </script>
 
 <script>
@@ -14,7 +14,7 @@ export default {
           { senator_id: "steam:2039120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
-        ]},
+        ], time: 1681442485000},
       ],
     };
   },
@@ -35,7 +35,7 @@ export default {
         }
       }
       return new_law;
-    }
+    },
   },
   components: {
     
@@ -51,12 +51,14 @@ export default {
         <tr class="pending_laws_table_row">
           <th>Law name</th>
           <th>Law type</th>
-          <th>Vote</th>
+          <th>For - Neutral - Against</th>
+          <th>Open vote until</th>
         </tr>
         <tr class="pending_laws_table_row" v-for="law in pending_laws">
           <td>{{law.title}}</td>
           <td>{{law.type}}</td>
-          <td>{{calculate_votes(law)}}</td>
+          <td><voteUI :votes="calculate_votes(law)"></voteUI></td>
+          <td>{{new Date(law.time).toDateString()}}</td>
         </tr>
       </table>
     </div>
