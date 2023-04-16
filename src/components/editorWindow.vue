@@ -3,11 +3,10 @@
     <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()">H1</button>
     <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">H2</button>
     <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">H3</button>
-    <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">Bold</button>
-    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">Italic</button>
-    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">Italic</button>
-    <button @click="editor.chain().focus().toggleBulletList().run()">Bullet List</button>
-    <button @click="editor.chain().focus().toggleOrderedList().run()">Ordered List</button>
+    <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }"><font-awesome-icon :icon="['fas', 'bold']" /></button>
+    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }"><font-awesome-icon :icon="['fas', 'italic']" /></button>
+    <button @click="editor.chain().focus().toggleBulletList().run()"><font-awesome-icon :icon="['fas', 'list']" /></button>
+    <button @click="editor.chain().focus().toggleOrderedList().run()"><font-awesome-icon :icon="['fas', 'list-ol']" /></button>
   </div>
   <editor-content :editor="editor" class="editor-container"  />
 </template>
@@ -80,11 +79,26 @@ button.is-active {
   font-weight: bold;
 }
 .editor-container {
-  height: 300px;
+  min-height: 18rem;
+  max-height: 22rem;
   overflow-y: auto;
   border: 3px solid black;
   border-bottom-left-radius: .4rem;
   border-bottom-right-radius: .4rem;
   padding: 1rem;
+}
+.toolbar {
+  gap: 0;
+  padding: 0;
+}
+button {
+  border: 0;
+  border-radius: 0;
+  padding: .4rem;
+  border-right: 1px solid black;
+}
+.toolbar > button:nth-child(1) {
+  border-top-left-radius: .1rem;
+  
 }
 </style>

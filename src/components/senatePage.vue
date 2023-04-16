@@ -53,7 +53,7 @@ export default {
     <div>
       <div class="senate_page_heading">
         <h2>Pending laws overview</h2>
-        <button style="margin: 1.4rem;">New Law</button>
+        <button style="margin: 1.4rem;" @click="textEditorOn = true">New Law</button>
       </div>
       <div class="pending_laws_table">
         <table>
@@ -94,10 +94,48 @@ export default {
     </div>
     <div v-if="textEditorOn" class="textEditor">
       <div class="textEditorWindow">
-        <h2 style="text-align: center;">Law editor</h2>
+        <div class="textEditorHeader">
+          <h2>Law editor</h2>
+          <button @click="textEditorOn = false">Exit</button>
+        </div>
+        <div class="textEditorInputs">
+          <div class="textEditorInput">
+            <span>Title:</span>
+            <input placeholder="Law title bill" maxlength="24" type="text">
+          </div>
+          <div class="textEditorInput">
+            <span>Type:</span>
+            <select name="law_type">
+              <option>Constitution</option>
+              <option>Amendment</option>
+              <option>Bill</option>
+              <option>Regional Law</option>
+            </select>
+          </div>
+          <div class="textEditorInput">
+            <span>Jurisdiction:</span>
+            <select name="law_jurisdiction">
+              <option>Los Santos</option>
+              <option>Sandy Shores</option>
+              <option>Grapeseed</option>
+              <option>Paleto Bay</option>
+            </select>
+          </div>
+          <div class="textEditorInput">
+            <span>Ideology:</span>
+            <select name="law_ideology">
+              <option>Far left</option>
+              <option>Left</option>
+              <option>Center</option>
+              <option>Right</option>
+              <option>Far right</option>
+            </select>
+          </div>
+        </div>
         <div class="editorWindow">
           <editorWindow v-model="content"></editorWindow>
         </div>
+        <button>Submit law</button>
       </div>
     </div>
   </div>
