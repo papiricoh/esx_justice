@@ -2,6 +2,7 @@
 import parliamentChart from './components/parliamentChart.vue';
 import pieChart from './components/pieChart.vue';
 import senatePage from './components/senatePage.vue';
+import partiesPage from './components/partiesPage.vue';
 </script>
 
 <script>
@@ -13,128 +14,32 @@ export default {
     return {
       loading: false,
       page: 'home',
-      player: { id: "steam:21382918", first_name: "John", last_name: "Doe"},
+      player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: "GNL" },
       parties: [
-        { name: "Socialist Union of Los Santos", label: "SUOLS", color: "#FF9001", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-        ]},
-        { name: "Sandy United Front", label: "SUF", color: "#CC0099", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-        ]},
         { name: "Gran National League", label: "GNL", color: "#789FC1", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-        ]},
-        { name: "Los Santos Great Coalition", label: "LSGC", color: "#080099", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-        ]},
-        { name: "Los Santos radical union", label: "LSRU", color: "#888888", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-        ]},
-        { name: "Make San Andreas great again", label: "MSAGE", color: "#FF0000", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Wale Killian", role: "Senator"},
-          { name: "John William", role: "Senator"},
-          { name: "Kate John", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-        ]},
-        { name: "Paleto great union", label: "PGU", color: "#046e08", members: [
-          { name: "Roger Walters", role: "Leader"},
-          { name: "Jonny Walters", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
-          { name: "George Russel", role: "Senator"},
-          { name: "Jonnathan Gale", role: "Senator"},
+          { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
       ],
     };
@@ -146,6 +51,14 @@ export default {
         imported_data[imported_data.length] = [this.parties[index].name, Number(this.parties[index].members.length), this.parties[index].color, this.parties[index].label];
       }
       return imported_data;
+    },
+    getPlayerParty() {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == this.player.party) {
+          return this.parties[index];
+        }
+      }
+      return null;
     }
   },
 };
@@ -162,6 +75,8 @@ export default {
           <li class="menu_list_item" v-else @click="page = 'home'">Home</li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'senate'">Senate</li>
           <li class="menu_list_item" v-else @click="page = 'senate'">Senate</li>
+          <li class="menu_list_item menu_list_item_active" v-if="page == 'parties'">Parties</li>
+          <li class="menu_list_item" v-else @click="page = 'parties'">Parties</li>
         </ul>
       </div>
       <div class="main_display">
@@ -185,6 +100,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
+        <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()"></partiesPage>
       </div>
     </div>
   </main>

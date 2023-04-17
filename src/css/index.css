@@ -4,6 +4,10 @@
     font-family: 'Roboto Slab', serif;
 }
 
+*::-webkit-scrollbar {
+    display: none;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -26,11 +30,11 @@ main {
 }
 
 .palette {
-    color: #0E1C36;
-    color: #AFCBFF;
-    color: #D7F9FF;
-    color: #FFEDE1;
-    color: #F9FBF2;
+    color: #26532B;
+    color: #399E5A;
+    color: #5ABCB9;
+    color: #63E2C6;
+    color: #6EF9F5;
 }
 
 .main {
@@ -46,7 +50,7 @@ main {
     flex-direction: column;
     align-items: stretch;
     min-width: 15%;
-    background-color: #FFEDE1;
+    background-color: #26532B;
 }
 
 .main_display {
@@ -67,7 +71,7 @@ main {
 }
 
 .menu_list_item {
-    background-color: #f5d0b8;
+    background-color: #399E5A;
     padding: 1rem;
     width: 80%;
     text-align: center;
@@ -78,23 +82,23 @@ main {
 
 
 .menu_list_item:hover {
-    background-color: #dabaa4;
+    background-color: #63E2C6;
     transition: .4s;
 }
 
 .menu_list_item:active {
-    background-color: #f5d0b8;
+    background-color: #399E5A;
     transition: .4s;
 }
 
 
 .menu_list_item_active {
-    background-color: #7e6f64;
+    background-color: #062e0b;
     color: white;
 }
 
 .home_header {
-    background-color: #fff9f6;
+    background-color: #5abcb963;
     height: 10rem;
     display: flex;
     justify-content: space-between;
@@ -119,18 +123,18 @@ button {
     padding: .4rem 1rem;
     background-color: transparent;
     border-radius: .4rem;
-    border: 2px solid #f5d0b8;
+    border: 2px solid #2ba5a167;
     cursor: pointer;
 }
 
 button:hover {
-    border-color: #dabaa4;
-    background-color: #f5d0b8;
+    border-color: #14cec867;
+    background-color: #2ba5a167;
 }
 
 
 button:active {
-    border-color: #f5d0b8;
+    border-color: #2ba5a167;
     background-color: transparent;
 }
 
@@ -172,7 +176,7 @@ button:active {
 .party_card {
     height: 22rem;
     width: 15rem;
-    background-color: #faeae0;
+    background-color: #a7f0ec65;
     border-radius: .4rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.283);
     display: flex;
@@ -214,11 +218,11 @@ button:active {
 }
 
 .pending_laws_table_row:nth-child(2n) {
-    background-color: #faeae0;
+    background-color: #a7f0ec3b;
 }
 
 .pending_laws_table_row:nth-child(1) {
-    background-color: #fffaf7;
+    background-color: #80dbd644;
 }
 
 .pending_laws_table_row > th:nth-child(1), .pending_laws_table_row > td:nth-child(1) {
@@ -366,4 +370,35 @@ button:active {
 .overflowA {
     overflow-y: scroll;
 
+}
+
+.parties_page, .parties_body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.parties_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8rem;
+    background-color: #a7f0ec3b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.336);
+    padding: 1.4rem;
+}
+
+.parties_body {
+    padding: 2rem;
+}
+
+.parties_actions {
+    padding: 1rem;
+    border-radius: .4rem;
+    background-color: #a7f0ec3b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.288);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
 }
