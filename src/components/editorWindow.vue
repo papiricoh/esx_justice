@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       editor: null,
+      htmlContent: null,
     }
   },
 
@@ -53,6 +54,9 @@ export default {
     })
   },
   methods: {
+    getHtmlContent() {
+      this.htmlContent = this.editor.getContent({ type: 'html' })
+    },
   },
   beforeUnmount() {
     this.editor.destroy()

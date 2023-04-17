@@ -1,11 +1,14 @@
 <template>
   <div>
-    
+    {{body}}
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    body: String
+  },
   components: {
   },
 
@@ -27,5 +30,7 @@ export default {
 </script>
 
 <style scoped>
-
+* {
+  white-space: pre-line;
+}
 </style>

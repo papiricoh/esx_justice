@@ -1,6 +1,7 @@
 <script setup>
 import voteUI from './voteUI.vue';
 import editorWindow from './editorWindow.vue';
+import readerWindow from './readerWindow.vue';
 </script>
 
 <script>
@@ -12,6 +13,7 @@ export default {
   data() {
     return {
       textEditorOn: false,
+      textReaderOn: true,
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
@@ -21,6 +23,14 @@ export default {
           { senator_id: "steam:2529120", vote: "against"},
         ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: null},
       ],
+      reader_data: { title: "Minecraft Bill", type: "Bill", votes: [
+          { senator_id: "steam:2039120", vote: "for"},
+          { senator_id: "steam:21382918", vote: "neutral"},
+          { senator_id: "steam:2033120", vote: "for"},
+          { senator_id: "steam:2439120", vote: "neutral"},
+          { senator_id: "steam:2529120", vote: "against"},
+        ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "hello\n BBABYE"}
+      //reader_data: { title: null, type: null, votes: null, time: null, jurisdiction: null, ideology: null, body: null },
     };
   },
   mounted() {
@@ -129,6 +139,20 @@ export default {
           <editorWindow v-model="content"></editorWindow>
         </div>
         <button>Submit law</button>
+      </div>
+    </div>
+    <div v-if="textReaderOn" class="textEditor">
+      <div class="textEditorWindow overflowA">
+        <div class="textEditorHeader">
+          <h2>{{reader_data.title}}</h2>
+          <button @click="textReaderOn = false">Exit</button>
+        </div>
+        <div class="textEditorInput" style="justify-content: space-around;">
+          <div>Type: {{ reader_data.type }}</div>
+          <div>Jurisdiction: {{ reader_data.jurisdiction }}</div>
+          <div>Ideology: {{ reader_data.ideology }}</div>
+        </div>
+        <readerWindow :body="reader_data.body"></readerWindow>
       </div>
     </div>
   </div>
