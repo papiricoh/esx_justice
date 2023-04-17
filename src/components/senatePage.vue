@@ -13,7 +13,10 @@ export default {
   data() {
     return {
       textEditorOn: false,
-      textReaderOn: true,
+      text_editor: {title: null, type: "Bill", jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+
+
+      textReaderOn: false,
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
@@ -21,16 +24,16 @@ export default {
           { senator_id: "steam:2033120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
-        ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: null},
-      ],
-      reader_data: { title: "Minecraft Bill", type: "Bill", votes: [
-          { senator_id: "steam:2039120", vote: "for"},
-          { senator_id: "steam:21382918", vote: "neutral"},
-          { senator_id: "steam:2033120", vote: "for"},
-          { senator_id: "steam:2439120", vote: "neutral"},
+        ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+        { title: "Guns prohibition Bill", type: "Bill", votes: [
+          { senator_id: "steam:2039120", vote: "neutral"},
+          { senator_id: "steam:21382918", vote: "against"},
+          { senator_id: "steam:2033120", vote: "against"},
+          { senator_id: "steam:2439120", vote: "against"},
           { senator_id: "steam:2529120", vote: "against"},
-        ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "hello\n BBABYE"}
-      //reader_data: { title: null, type: null, votes: null, time: null, jurisdiction: null, ideology: null, body: null },
+        ], time: 2681442485000, jurisdiction: "Los Santos", ideology: "Far Left", body: "<p>Law text</p>"},
+      ],
+      reader_data: { title: null, type: null, votes: null, time: null, jurisdiction: null, ideology: null, body: null },
     };
   },
   mounted() {
@@ -42,6 +45,19 @@ export default {
         if(this.pending_laws[index].title == law.title) {
           this.pending_laws[index] = law;
         }
+      }
+    },
+    textReaderOff() {
+      this.textReaderOn = false;
+    },
+    submitLaw(tlaw) {
+      if(tlaw.title == null || tlaw.body == null) {
+
+      }else {
+        tlaw.votes = [{ senator_id: this.player.id, vote: "for"},];
+        tlaw.time = Date.now();
+        this.pending_laws[this.pending_laws.length] = tlaw;
+        this.textEditorOn = false;
       }
     }
   },
@@ -72,7 +88,7 @@ export default {
             <td>{{law.type}}</td>
             <td><voteUI @updatePendingLaws="updatePendingLaws($event)" :player="player" :law="law"></voteUI></td>
             <td>{{new Date(law.time).toDateString()}}</td>
-            <td><button>Read</button></td>
+            <td><button @click="reader_data = law, textReaderOn = true">Read</button></td>
           </tr>
         </table>
       </div>
@@ -104,11 +120,11 @@ export default {
         <div class="textEditorInputs">
           <div class="textEditorInput">
             <span>Title:</span>
-            <input placeholder="Law title bill" maxlength="24" type="text">
+            <input v-model="text_editor.title" placeholder="Law title bill" maxlength="24" type="text">
           </div>
           <div class="textEditorInput">
             <span>Type:</span>
-            <select name="law_type">
+            <select v-model="text_editor.type"  name="law_type">
               <option>Constitution</option>
               <option>Amendment</option>
               <option>Bill</option>
@@ -117,7 +133,7 @@ export default {
           </div>
           <div class="textEditorInput">
             <span>Jurisdiction:</span>
-            <select name="law_jurisdiction">
+            <select v-model="text_editor.jurisdiction" name="law_jurisdiction">
               <option>Los Santos</option>
               <option>Sandy Shores</option>
               <option>Grapeseed</option>
@@ -126,7 +142,7 @@ export default {
           </div>
           <div class="textEditorInput">
             <span>Ideology:</span>
-            <select name="law_ideology">
+            <select v-model="text_editor.ideology" name="law_ideology">
               <option>Far left</option>
               <option>Left</option>
               <option>Center</option>
@@ -136,24 +152,13 @@ export default {
           </div>
         </div>
         <div class="editorWindow">
-          <editorWindow v-model="content"></editorWindow>
+          <editorWindow v-model="text_editor.body"></editorWindow>
         </div>
-        <button>Submit law</button>
+        <button @click="submitLaw(text_editor)">Submit law</button>
       </div>
     </div>
     <div v-if="textReaderOn" class="textEditor">
-      <div class="textEditorWindow overflowA">
-        <div class="textEditorHeader">
-          <h2>{{reader_data.title}}</h2>
-          <button @click="textReaderOn = false">Exit</button>
-        </div>
-        <div class="textEditorInput" style="justify-content: space-around;">
-          <div>Type: {{ reader_data.type }}</div>
-          <div>Jurisdiction: {{ reader_data.jurisdiction }}</div>
-          <div>Ideology: {{ reader_data.ideology }}</div>
-        </div>
-        <readerWindow :body="reader_data.body"></readerWindow>
-      </div>
+      <readerWindow @textReaderOff="textReaderOff" :reader_data="reader_data"></readerWindow>
     </div>
   </div>
 </template>

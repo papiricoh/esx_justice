@@ -28,16 +28,34 @@ export default {
     EditorContent,
   },
 
+  props: {
+    modelValue: {
+      type: String,
+      default: '',
+    },
+  },
+
+  emits: ['update:modelValue'],
+
   data() {
     return {
       editor: null,
-      htmlContent: null,
     }
+  },
+
+  watch: {
+    modelValue(value) {
+      const isSame = this.editor.getHTML() === value
+      if (isSame) {
+        return
+      }
+      this.editor.commands.setContent(value, false)
+    },
   },
 
   mounted() {
     this.editor = new Editor({
-      content: '<p>Law body</p>',
+      content: this.modelValue,
       extensions: [
         Document,
         Paragraph,
@@ -51,11 +69,14 @@ export default {
         BulletList,
         OrderedList,
       ],
+      onUpdate: () => {
+        this.$emit('update:modelValue', this.editor.getHTML())
+      },
     })
   },
   methods: {
     getHtmlContent() {
-      this.htmlContent = this.editor.getContent({ type: 'html' })
+      this.htmlContent = this.editor.getHTML();
     },
   },
   beforeUnmount() {
@@ -83,8 +104,7 @@ button.is-active {
   font-weight: bold;
 }
 .editor-container {
-  min-height: 18rem;
-  max-height: 22rem;
+  height: 18rem;
   overflow-y: auto;
   border: 3px solid black;
   border-bottom-left-radius: .4rem;
