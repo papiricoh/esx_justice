@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      textEditorOn: true,
+      textEditorOn: false,
       pending_laws: [
         { title: "Minecraft Bill", type: "Bill", votes: [
           { senator_id: "steam:2039120", vote: "for"},
@@ -19,14 +19,7 @@ export default {
           { senator_id: "steam:2033120", vote: "for"},
           { senator_id: "steam:2439120", vote: "neutral"},
           { senator_id: "steam:2529120", vote: "against"},
-        ], time: 1681442485000, body: null},
-        { title: "Gun Bill", type: "Bill", votes: [
-          { senator_id: "steam:2039120", vote: "for"},
-          { senator_id: "steam:742823", vote: "for"},
-          { senator_id: "steam:2033120", vote: "for"},
-          { senator_id: "steam:2439120", vote: "neutral"},
-          { senator_id: "steam:2529120", vote: "against"},
-        ], time: 1881442485000, body: null},
+        ], time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: null},
       ],
     };
   },
