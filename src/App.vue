@@ -78,17 +78,35 @@ export default {
       }
       return null;
     },
+    getLeaders(party) {
+      let leadership = { leader: null, whip: null, caucus: null, whipa: null }
+      for (let index = 0; index < party.members.length; index++) {
+        if(party.members[index].role == 'Leader') {
+          leadership.leader = party.members[index];
+        }else if(party.members[index].role == 'Whip') {
+          leadership.whip = party.members[index];
+        }else if(party.members[index].role == 'Caucus') {
+          leadership.caucus = party.members[index];
+        }else if(party.members[index].role == 'WhipA') {
+          leadership.whipa = party.members[index];
+        }
+      }
+      return leadership;
+    },
     getMayorityParty(parties) {
       if(parties == null) {
         return null;
       }
+      let mayority_index = 0;
       let mayority_party = { label: null, members: 0 }
       for (let index = 0; index < parties.length; index++) {
         if(parties[index].members.length > mayority_party.members) {
           mayority_party.members = parties[index].members.length;
           mayority_party.label = parties[index].label;
+          mayority_index = index;
         }
       }
+      mayority_party.leadership = this.getLeaders(parties[mayority_index]);
       return mayority_party
     },
     getPartyByLabel(label) {
