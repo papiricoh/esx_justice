@@ -26,6 +26,40 @@ export default {
           return this.party.members[index].role;
         }
       }
+    },
+    generateImportedNodes() {
+      let nodes = [];
+      nodes[nodes.length] = { id: "Speaker"}
+      nodes[nodes.length] = { id: "Mayority party", title: "Mayority party", name: this.leadership.mayority.label}
+      if(this.leadership.mayority.leadership.leader != null) {
+        nodes[nodes.length] = { id: "Mayority Leader", title: "Mayority Leader", name: this.leadership.mayority.leadership.leader.name}
+      }
+      if(this.leadership.mayority.leadership.whip != null) {
+        nodes[nodes.length] = { id: "Mayority whip", title: "Mayority whip", name: this.leadership.mayority.leadership.whip.name}
+      }
+      if(this.leadership.mayority.leadership.caucus != null) {
+        nodes[nodes.length] = { id: "Mayority Caucus coordinator", title: "Mayority caucus coordinator", name: this.leadership.mayority.leadership.caucus.name}
+      }
+      if(this.leadership.mayority.leadership.whipa != null) {
+        nodes[nodes.length] = { id: "Mayority whip assistant", title: "Mayority whip assistant", name: this.leadership.mayority.leadership.whipa.name}
+      }
+
+      if(this.leadership.minority != null) {
+        nodes[nodes.length] = { id: "Minority party", title: "Minority party", name: this.leadership.minority.label}
+        if(this.leadership.minority.leadership.leader != null) {
+          nodes[nodes.length] = { id: "Minority Leader", title: "Minority Leader", name: this.leadership.minority.leadership.leader.name}
+        }
+        if(this.leadership.minority.leadership.whip != null) {
+          nodes[nodes.length] = { id: "Minority whip", title: "Minority whip", name: this.leadership.minority.leadership.whip.name}
+        }
+        if(this.leadership.minority.leadership.caucus != null) {
+          nodes[nodes.length] = { id: "Minority Caucus coordinator", title: "Minority caucus coordinator", name: this.leadership.minority.leadership.caucus.name}
+        }
+        if(this.leadership.minority.leadership.whipa != null) {
+          nodes[nodes.length] = { id: "Minority whip assistant", title: "Minority whip assistant", name: this.leadership.minority.leadership.whipa.name}
+        }
+      }
+      return nodes;
     }
   },
   components: {
@@ -47,7 +81,7 @@ export default {
       </div>
       <div class="parties_body">
         <div class="parties_actions">
-          <organizationChart></organizationChart>
+          <organizationChart :imported_nodes="generateImportedNodes()"></organizationChart>
         </div>
       </div>
     </div>

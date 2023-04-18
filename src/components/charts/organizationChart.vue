@@ -6,7 +6,7 @@ import {Chart} from 'highcharts-vue';
 export default {
   props: {
     imported_data: Array,
-    imported_levels: Array,
+    imported_nodes: Array,
   },
   data() {
     return {
@@ -136,7 +136,7 @@ export default {
     };
   },
   mounted() {
-    //this.chartOptions.series[0].data = this.imported_data;
+    this.chartOptions.series[0].nodes = this.imported_nodes;
   },
   methods: {
     
