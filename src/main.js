@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import HighchartsVue from 'highcharts-vue'
 import Highcharts from 'highcharts'
 import itemSeries from 'highcharts/modules/item-series'
+import sankey from 'highcharts/modules/sankey'
+import organizationSeries from 'highcharts/modules/organization'
 import App from './App.vue'
 import store from './store';
 import $ from 'jquery';
@@ -24,5 +26,7 @@ library.add(faBold)
 library.add(faItalic)
 
 itemSeries(Highcharts);
+sankey(Highcharts);
+organizationSeries(Highcharts);
 
 createApp(App).use(store).use(HighchartsVue).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

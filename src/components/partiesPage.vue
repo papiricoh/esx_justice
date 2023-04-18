@@ -1,11 +1,13 @@
 <script setup>
+import organizationChart from './charts/organizationChart.vue';
 </script>
 
 <script>
 export default {
   props: {
     party: Object,
-    player: Object
+    player: Object,
+    leadership: Object,
   },
   data() {
     return {
@@ -45,7 +47,7 @@ export default {
       </div>
       <div class="parties_body">
         <div class="parties_actions">
-          <h3>Party actions</h3>
+          <organizationChart></organizationChart>
         </div>
       </div>
     </div>

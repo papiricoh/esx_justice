@@ -1,6 +1,6 @@
 <script setup>
-import parliamentChart from './components/parliamentChart.vue';
-import pieChart from './components/pieChart.vue';
+import parliamentChart from './components/charts/parliamentChart.vue';
+import pieChart from './components/charts/pieChart.vue';
 import senatePage from './components/senatePage.vue';
 import partiesPage from './components/partiesPage.vue';
 </script>
@@ -18,9 +18,9 @@ export default {
       parties: [
         { name: "Gran National League", label: "GNL", color: "#789FC1", members: [
           { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
-          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
-          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
-          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Whip"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Caucus"},
+          { id: "steam:21743918", name: "Roger Walters", role: "WhipA"},
           { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
@@ -41,6 +41,24 @@ export default {
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
+        { name: "Los Santos Republican League", label: "LSRL", color: "#F85552", members: [
+          { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Whip"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Caucus"},
+          { id: "steam:21743918", name: "Roger Walters", role: "WhipA"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+        ]},
       ],
     };
   },
@@ -59,6 +77,37 @@ export default {
         }
       }
       return null;
+    },
+    getMayorityParty(parties) {
+      if(parties == null) {
+        return null;
+      }
+      let mayority_party = { label: null, members: 0 }
+      for (let index = 0; index < parties.length; index++) {
+        if(parties[index].members.length > mayority_party.members) {
+          mayority_party.members = parties[index].members.length;
+          mayority_party.label = parties[index].label;
+        }
+      }
+      return mayority_party
+    },
+    getPartyByLabel(label) {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == label) {
+          return this.parties[index];
+        }
+      }
+      return null;
+    },
+    generateLeadership() {
+      let parties_copy = JSON.parse(JSON.stringify(this.parties));
+      let mayority_party = this.getMayorityParty(parties_copy);
+      
+      let indexMayority = this.getPartyByLabel(mayority_party.label);
+      parties_copy.splice(indexMayority, 1);
+
+      let minority_party = this.getMayorityParty(parties_copy);
+      return { mayority: mayority_party, minority: minority_party }
     }
   },
 };
@@ -100,7 +149,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()"></partiesPage>
+        <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
       </div>
     </div>
   </main>
