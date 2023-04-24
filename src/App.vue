@@ -16,6 +16,32 @@ export default {
       page: 'home',
       player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: "GNL" },
       parties: [
+        { name: "Kiwa National League", label: "KNL", color: "#82831", members: [
+          { id: "steam:21382918", name: "Leonard Jul", role: "Leader"},
+          { id: "steam:21382418", name: "KIll el Trabieso", role: "Whip"},
+          { id: "steam:213632918", name: "Unitero Lopez", role: "Caucus"},
+          { id: "steam:21743918", name: "Aki Lopez", role: "WhipA"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
+        ]},
         { name: "Gran National League", label: "GNL", color: "#789FC1", members: [
           { id: "steam:21382918", name: "Papi Ricoh", role: "Leader"},
           { id: "steam:21382418", name: "Jorje el Trabieso", role: "Whip"},
@@ -117,11 +143,19 @@ export default {
       }
       return null;
     },
+    getPartyIndexByLabel(label) {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == label) {
+          return index;
+        }
+      }
+      return null;
+    },
     generateLeadership() {
       let parties_copy = JSON.parse(JSON.stringify(this.parties));
       let mayority_party = this.getMayorityParty(parties_copy);
       
-      let indexMayority = this.getPartyByLabel(mayority_party.label);
+      let indexMayority = this.getPartyIndexByLabel(mayority_party.label);
       parties_copy.splice(indexMayority, 1);
 
       let minority_party = this.getMayorityParty(parties_copy);
