@@ -27,7 +27,15 @@ export default {
 <template>
   <div>
     <div class="laws_header">
-      dwadwadwa
+      <h2>Laws</h2>
+      <p>Seach to diferent laws</p>
+    </div>
+    <div class="laws_body">
+      <div class="laws_seccion">
+        <div class="laws_seccion_menu">
+          <button>Constitution</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
