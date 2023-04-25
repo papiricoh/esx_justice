@@ -442,3 +442,7 @@ button:active {
     align-items: stretch;
     gap: 1rem;
 }
+
+.laws_menu_button>button {
+    width: 100%;
+}

@@ -9,7 +9,10 @@ export default {
   },
   data() {
     return {
-      
+      laws: [
+        { title: "Los Santos Constitution", type: "Constitution", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+        { title: "Minecraft Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+      ],
     };
   },
   mounted() {
@@ -33,7 +36,9 @@ export default {
     <div class="laws_body">
       <div class="laws_seccion">
         <div class="laws_seccion_menu">
-          <button>Constitution</button>
+          <div class="laws_menu_button" v-for="law in laws">
+            <button>{{law.title}}</button>
+          </div>
         </div>
       </div>
     </div>
