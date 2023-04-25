@@ -3,6 +3,7 @@ import parliamentChart from './components/charts/parliamentChart.vue';
 import pieChart from './components/charts/pieChart.vue';
 import senatePage from './components/senatePage.vue';
 import partiesPage from './components/partiesPage.vue';
+import lawsPage from './components/lawsPage.vue';
 </script>
 
 <script>
@@ -178,6 +179,8 @@ export default {
           <li class="menu_list_item" v-else @click="page = 'senate'">Senate</li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'parties'">Parties</li>
           <li class="menu_list_item" v-else @click="page = 'parties'">Parties</li>
+          <li class="menu_list_item menu_list_item_active" v-if="page == 'laws'">Laws</li>
+          <li class="menu_list_item" v-else @click="page = 'laws'">Laws</li>
         </ul>
       </div>
       <div class="main_display">
@@ -202,6 +205,7 @@ export default {
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
         <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <lawsPage class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
   </main>
