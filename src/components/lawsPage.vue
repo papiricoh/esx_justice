@@ -69,8 +69,8 @@ export default {
               <div>Title</div>
               <div>Jurisdiction</div>
               <div>Ideology</div>
-              <div>Date</div>
-              <div>Read</div>
+              <div style="width: 10%;">Date</div>
+              <div style="width: 5%;">Read</div>
             </div>
             <div v-for="law in displayed_laws" class="law_container">
               <div>{{ law.title }}</div>

@@ -475,7 +475,7 @@ button:active {
     padding: .6rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .law_container:nth-child(2n) {
@@ -486,11 +486,6 @@ button:active {
     border-top-right-radius: .4rem;
     border-top-left-radius: .4rem;
     background-color: rgb(180, 207, 241);
-}
-
-.law_container:last-child {
-    border-bottom-right-radius: .4rem;
-    border-bottom-left-radius: .4rem;
 }
 
 
