@@ -16,6 +16,10 @@ import { faList } from '@fortawesome/free-solid-svg-icons'
 import { faListOl } from '@fortawesome/free-solid-svg-icons'
 import { faBold } from '@fortawesome/free-solid-svg-icons'
 import { faItalic } from '@fortawesome/free-solid-svg-icons'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faBuildingColumns } from '@fortawesome/free-solid-svg-icons'
+import { faFlag } from '@fortawesome/free-solid-svg-icons'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 window.$ = window.jQuery = $;
 
@@ -24,6 +28,10 @@ library.add(faList)
 library.add(faListOl)
 library.add(faBold)
 library.add(faItalic)
+library.add(faHouse)
+library.add(faBuildingColumns)
+library.add(faFlag)
+library.add(faBook)
 
 itemSeries(Highcharts);
 sankey(Highcharts);
