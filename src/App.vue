@@ -68,6 +68,12 @@ export default {
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
+        { name: "The Black Hand party", label: "BH", color: "#2832E0", members: [
+          { id: "steam:21382918", name: "Omar Montes", role: "Leader"},
+          { id: "steam:21382418", name: "Don Omar", role: "Whip"},
+          { id: "steam:213632918", name: "Felix Carrion", role: "Caucus"},
+          { id: "steam:21743918", name: "Daddy Jankee", role: "WhipA"},
+        ]},
         { name: "Los Santos Republican League", label: "LSRL", color: "#F85552", members: [
           { id: "steam:21382918", name: "Omar Montes", role: "Leader"},
           { id: "steam:21382418", name: "Don Omar", role: "Whip"},
@@ -87,9 +93,40 @@ export default {
           { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
         ]},
       ],
+
+      laws: [
+        { title: "Los Santos Constitution", type: "Constitution", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+        { title: "First Amendment", type: "Amendment", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+        { title: "Weapons Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
+        { title: "Traffic Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Right", body: "<p>Law text</p>"},
+        { title: "Logic Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Far Right", body: "<p>Law text</p>"},
+      ],
     };
   },
   methods: {
+    calculatePie() {
+      let pieList = [{name: 'Constitution',y: 0,}, {name: 'Anmenments',y: 0}, {name: 'Bills',y: 0}, {name: 'Regional Decrees',y: 0}];
+      for (let index = 0; index < this.laws.length; index++) {
+        switch (this.laws[index].type) {
+          case "Constitution":
+            pieList[0].y = pieList[0].y + 1
+            break;
+          case "Amendment":
+            pieList[1].y = pieList[1].y + 1
+            break;
+          case "Bill":
+            pieList[2].y = pieList[2].y + 1
+            break;
+          case "Regional Law":
+            pieList[3].y = pieList[3].y + 1
+            break;
+          default:
+            break;
+        }
+        
+      }
+      return pieList;
+    },
     toPartyChartData() {
       let imported_data = [];
       for (let index = 0; index < this.parties.length; index++) {
@@ -195,7 +232,7 @@ export default {
             <h2>Senate Overview</h2>
             <div class="chart_container">
               <parliamentChart :imported_data="toPartyChartData()"></parliamentChart>
-              <pieChart :imported_data="[{name: 'Constitution',y: 1.67,}, {name: 'Anmenments',y: 14.77}, {name: 'Bills',y: 124.77}, {name: 'Regional Decrees',y: 56.77},]"></pieChart>
+              <pieChart :imported_data="calculatePie()"></pieChart>
             </div>
             <br>
             <h2>Supreme Court Overview</h2>
@@ -204,7 +241,7 @@ export default {
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
         <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
-        <lawsPage class="laws_page" v-if="page == 'laws'"></lawsPage>
+        <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
   </main>

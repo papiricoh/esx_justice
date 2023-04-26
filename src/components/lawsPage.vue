@@ -5,16 +5,11 @@
 <script>
 export default {
   props: {
-    
+    laws : Array,
   },
   data() {
     return {
       law_page: "Constitution",
-      laws: [
-        { title: "Los Santos Constitution", type: "Constitution", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
-        { title: "Minecraft Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
-        { title: "d Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
-      ],
       displayed_laws: [],
     };
   },
@@ -51,8 +46,8 @@ export default {
             <button @click="law_page = 'Constitution', updateLawList()" v-else>Constitution</button>
           </div>
           <div class="laws_menu_button">
-            <button class="active_button" v-if="law_page == 'amendment'">Amendment</button>
-            <button @click="law_page = 'amendment', updateLawList()" v-else>Amendment</button>
+            <button class="active_button" v-if="law_page == 'Amendment'">Amendment</button>
+            <button @click="law_page = 'Amendment', updateLawList()" v-else>Amendment</button>
           </div>
           <div class="laws_menu_button">
             <button class="active_button" v-if="law_page == 'Bill'">Bill</button>
