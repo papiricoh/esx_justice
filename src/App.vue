@@ -100,6 +100,7 @@ export default {
         { title: "Weapons Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Center", body: "<p>Law text</p>"},
         { title: "Traffic Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Right", body: "<p>Law text</p>"},
         { title: "Logic Bill", type: "Bill", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Far Right", body: "<p>Law text</p>"},
+        { title: "No-Hunt Decree", type: "Regional Law", time: 1681442485000, jurisdiction: "Los Santos", ideology: "Far Right", body: "<p>Law text</p>"},
       ],
     };
   },
