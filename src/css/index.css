@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Roboto Slab', serif;
+    color: rgba(39,49,61, 1);;
 }
 
 *::-webkit-scrollbar {
@@ -30,11 +31,11 @@ main {
 }
 
 .palette {
-    color: #26532B;
-    color: #399E5A;
-    color: #5ABCB9;
-    color: #63E2C6;
-    color: #6EF9F5;
+    color: rgba(55,72,90, 1);
+    color: rgba(71,132,182, 1);
+    color: rgba(157,195,235, 1);
+    color: rgba(221,232,246, 1);
+    color: rgba(71,132,182, 0.08);
 }
 
 .main {
@@ -50,7 +51,7 @@ main {
     flex-direction: column;
     align-items: stretch;
     min-width: 15%;
-    background-color: #26532B;
+    background-color: rgba(71,132,182, 1);
 }
 
 .main_display {
@@ -71,7 +72,8 @@ main {
 }
 
 .menu_list_item {
-    background-color: #399E5A;
+    color: rgb(233, 233, 233);
+    background-color: rgba(45, 95, 137, 0.88);
     padding: 1rem;
     width: 80%;
     text-align: center;
@@ -82,23 +84,23 @@ main {
 
 
 .menu_list_item:hover {
-    background-color: #63E2C6;
+    background-color: grey;
     transition: .4s;
 }
 
 .menu_list_item:active {
-    background-color: #399E5A;
+    background-color: rgba(45, 95, 137, 0.88);
     transition: .4s;
 }
 
 
 .menu_list_item_active {
-    background-color: #062e0b;
+    background-color: black;
     color: white;
 }
 
 .home_header {
-    background-color: #5abcb963;
+    background-color: white;
     height: 10rem;
     display: flex;
     justify-content: space-between;
@@ -123,19 +125,22 @@ button {
     padding: .4rem 1rem;
     background-color: transparent;
     border-radius: .4rem;
-    border: 2px solid #2ba5a167;
+    border: 2px solid rgba(157,195,235, 1);
     cursor: pointer;
+    transition: .4s;
 }
 
 button:hover {
-    border-color: #14cec867;
-    background-color: #2ba5a167;
+    border-color: rgba(71,132,182, 1);
+    background-color: rgba(157,195,235, 1);
+    transition: .4s;
 }
 
 
 button:active {
-    border-color: #2ba5a167;
+    border-color: rgba(157,195,235, 1);
     background-color: transparent;
+    transition: .4s;
 }
 
 .home_body {
@@ -176,7 +181,7 @@ button:active {
 .party_card {
     height: 22rem;
     width: 15rem;
-    background-color: #a7f0ec65;
+    background-color: rgba(221,232,246, 0.3);
     border-radius: .4rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.283);
     display: flex;
@@ -218,11 +223,11 @@ button:active {
 }
 
 .pending_laws_table_row:nth-child(2n) {
-    background-color: #a7f0ec3b;
+    background-color: rgba(221,232,246, 1);
 }
 
 .pending_laws_table_row:nth-child(1) {
-    background-color: #80dbd644;
+    background-color: rgb(152, 190, 239);
 }
 
 .pending_laws_table_row > th:nth-child(1), .pending_laws_table_row > td:nth-child(1) {
@@ -383,7 +388,7 @@ button:active {
     justify-content: space-between;
     align-items: center;
     height: 8rem;
-    background-color: #a7f0ec3b;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.336);
     padding: 1.4rem;
 }
@@ -395,7 +400,7 @@ button:active {
 .parties_actions {
     padding: 1rem;
     border-radius: .4rem;
-    background-color: #a7f0ec3b;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.288);
     display: flex;
     flex-direction: column;
@@ -414,7 +419,7 @@ button:active {
     justify-content: space-between;
     padding: 1.4rem;
     height: 6rem;
-    background-color: #5abcb966;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.261);
 }
 
@@ -428,8 +433,7 @@ button:active {
 .laws_seccion {
     border-radius: 1rem;
     min-height: 4rem;
-    padding: 1rem;
-    background-color: #63e2c683;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.322);
     display: flex;
     align-items: stretch;
@@ -438,9 +442,14 @@ button:active {
 .laws_seccion_menu {
     width: 15%;
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
+    background-color: rgba(221,232,246, 1);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    box-shadow: 2px 0 rgba(0, 0, 0, 0.177);
 }
 
 .laws_menu_button>button {
@@ -448,7 +457,7 @@ button:active {
 }
 
 .active_button {
-    background-color: #5ABCB9;
+    
 }
 
 .laws_seccion_body {
@@ -460,7 +469,7 @@ button:active {
     gap: .8rem;
 }
 .law_container {
-    background-color: #bcdad99c;
+    background-color: rgba(221,232,246, 1);
     padding: .4rem;
     border-radius: .4rem;
     display: flex;

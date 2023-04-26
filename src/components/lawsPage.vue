@@ -66,6 +66,7 @@ export default {
         <div class="laws_seccion_body">
           <div v-for="law in displayed_laws" class="law_container">
             <div>{{ law.title }}</div>
+            <div>{{ new Date(law.time).toDateString() }}</div>
           </div>
         </div>
       </div>
