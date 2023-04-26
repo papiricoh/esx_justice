@@ -20,6 +20,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faBuildingColumns } from '@fortawesome/free-solid-svg-icons'
 import { faFlag } from '@fortawesome/free-solid-svg-icons'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
+import { faBalanceScale } from '@fortawesome/free-solid-svg-icons'
 
 window.$ = window.jQuery = $;
 
@@ -32,6 +33,7 @@ library.add(faHouse)
 library.add(faBuildingColumns)
 library.add(faFlag)
 library.add(faBook)
+library.add(faBalanceScale)
 
 itemSeries(Highcharts);
 sankey(Highcharts);

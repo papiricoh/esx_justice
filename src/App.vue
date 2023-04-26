@@ -218,6 +218,8 @@ export default {
           <li class="menu_list_item" v-else @click="page = 'parties'"><font-awesome-icon icon="fa-solid fa-flag" /></li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
           <li class="menu_list_item" v-else @click="page = 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
+          <li class="menu_list_item menu_list_item_active" v-if="page == 'justice'"><font-awesome-icon icon="fa-solid fa-balance-scale" /></li>
+          <li class="menu_list_item" v-else @click="page = 'justice'"><font-awesome-icon icon="fa-solid fa-balance-scale" /></li>
         </ul>
       </div>
       <div class="main_display">
