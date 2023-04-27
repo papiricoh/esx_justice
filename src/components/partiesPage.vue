@@ -86,12 +86,10 @@ export default {
         <button @click="leaveParty()">Leave party</button>
       </div>
       <div class="parties_body">
-        <div class="parties_actions">
-          <organizationChart :imported_nodes="generateImportedNodes()"></organizationChart>
-        </div>
+        
       </div>
     </div>
-    <div>
+    <div v-else>
       <div class="parties_heading">
         <h2>Parties panel</h2>
         <div>Create or join a party</div>
@@ -101,17 +99,22 @@ export default {
           <div class="parties_body_list_row">
             <h4>Party name</h4>
             <h4>Label</h4>
+            <h4>Members</h4>
             <h4>Color</h4>
             <h4>Join</h4>
           </div>
           <div class="parties_body_list_row" v-for="list_party in parties">
             <div>{{list_party.name}}</div>
             <div>{{list_party.label}}</div>
+            <div>{{list_party.members.length}}</div>
             <div class="parties_color" :style="'background-color:' + list_party.color + ';'"></div>
-            <button>Join</button>
+            <button @click="this.$emit('joinParty', list_party.label), hasParty = true">Join</button>
           </div>
         </div>
       </div>
+    </div>
+    <div class="parties_actions">
+      <organizationChart :imported_nodes="generateImportedNodes()"></organizationChart>
     </div>
   </div>
 </template>

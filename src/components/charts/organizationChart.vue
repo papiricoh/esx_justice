@@ -12,7 +12,7 @@ export default {
     return {
       chartOptions: {    
         chart: {
-          height: 600,
+          height: 800,
           inverted: true
         },
 
@@ -34,7 +34,7 @@ export default {
 
         series: [{
           type: 'organization',
-          name: 'Highsoft',
+          name: 'Senate Organization',
           keys: ['from', 'to'],
           data: [
             ['Speaker', 'Mayority party'],

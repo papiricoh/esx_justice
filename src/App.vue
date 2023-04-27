@@ -44,11 +44,10 @@ export default {
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
         { name: "Gran National League", label: "GNL", color: "#789FC1", members: [
-          { id: "steam:21382918", name: "Papi Ricoh", role: "Leader"},
           { id: "steam:21382418", name: "Jorje el Trabieso", role: "Whip"},
           { id: "steam:213632918", name: "Pablo Lopez", role: "Caucus"},
           { id: "steam:21743918", name: "Roberto Lopez", role: "WhipA"},
-          { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382418", name: "Roger Walters", role: "Leader"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
@@ -109,7 +108,12 @@ export default {
       this.parties[this.parties.length] = party;
     },
     joinParty(party_label) {
-      this.player.party = party_label;
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == party_label) {
+          this.player.party = party_label;
+          this.parties[index].members[this.parties[index].members.length] = {id: this.player.id, name: this.player.first_name + " " + this.player.last_name, role: "Senator"}
+        }
+      }
     },
     leaveParty() {
       //fetch leave party
@@ -280,7 +284,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <partiesPage @joinParty="joinParty" @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
         <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>

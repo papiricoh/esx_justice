@@ -505,7 +505,7 @@ button:active {
 
 .parties_body_list_row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 1rem;
     gap: 1rem;
