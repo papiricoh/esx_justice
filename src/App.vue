@@ -15,9 +15,9 @@ export default {
     return {
       loading: false,
       page: 'home',
-      player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: "GNL" },
+      player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: null },
       parties: [
-        { name: "Kiwa National League", label: "KNL", color: "#82831", members: [
+        { name: "Kiwa National League", label: "KNL", color: "#822831", members: [
           { id: "steam:21382918", name: "Leonard Jul", role: "Leader"},
           { id: "steam:21382418", name: "KIll el Trabieso", role: "Whip"},
           { id: "steam:213632918", name: "Unitero Lopez", role: "Caucus"},
@@ -280,7 +280,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <partiesPage @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
         <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
