@@ -20,6 +20,11 @@ export default {
     }
   },
   methods: {
+    leaveParty() {
+      //TODO Leave party fetch
+      this.$emit('leaveParty');
+      this.hasParty = false;
+    },
     getPosition() {
       for (let index = 0; index < this.party.members.length; index++) {
         if(this.party.members[index].id == this.player.id) {
@@ -77,7 +82,7 @@ export default {
           <div>Members: {{ party.members.length }}</div>
         </div>
         <div>Position: {{ getPosition() }}</div>
-        <button>Leave party</button>
+        <button @click="leaveParty()">Leave party</button>
       </div>
       <div class="parties_body">
         <div class="parties_actions">

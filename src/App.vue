@@ -105,6 +105,48 @@ export default {
     };
   },
   methods: {
+    createParty(party) {
+      this.parties[this.parties.length] = party;
+    },
+    joinParty(party_label) {
+      this.player.party = party_label;
+    },
+    leaveParty() {
+      //fetch leave party
+      this.removePlayerFromParty(this.player);
+      this.player.party = null;
+    },
+    removePlayerFromParty(player) {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == player.party) {
+          for (let index2 = 0; index2 < this.parties[index].members.length; index2++) {
+            if(this.parties[index].members[index2].id == player.id) {
+              this.parties[index].members.splice(index2, 1);
+            }
+          }
+          this.checkPartyLeadership(this.parties[index].label);
+        }
+      }
+    },
+    checkPartyLeadership(label) {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label == label && !this.hasLeader(this.parties[index].members)) {
+          for (let i = 0; i < this.parties[index].members.length; i++) {
+            if(this.parties[index].members[i].role == "Whip") {
+              this.parties[index].members[i].role = "Leader";
+            }
+          }
+        }
+      }
+    },
+    hasLeader(members) {
+      for (let index = 0; index < members.length; index++) {
+        if(members[index].role == "Leader") {
+          return true;
+        }
+      }
+      return false;
+    },
     calculatePie() {
       let pieList = [{name: 'Constitution',y: 0,}, {name: 'Anmenments',y: 0}, {name: 'Bills',y: 0}, {name: 'Regional Decrees',y: 0}];
       for (let index = 0; index < this.laws.length; index++) {
@@ -218,8 +260,6 @@ export default {
           <li class="menu_list_item" v-else @click="page = 'parties'"><font-awesome-icon icon="fa-solid fa-flag" /></li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
           <li class="menu_list_item" v-else @click="page = 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
-          <li class="menu_list_item menu_list_item_active" v-if="page == 'justice'"><font-awesome-icon icon="fa-solid fa-balance-scale" /></li>
-          <li class="menu_list_item" v-else @click="page = 'justice'"><font-awesome-icon icon="fa-solid fa-balance-scale" /></li>
         </ul>
       </div>
       <div class="main_display">
@@ -237,13 +277,10 @@ export default {
               <parliamentChart :imported_data="toPartyChartData()"></parliamentChart>
               <pieChart :imported_data="calculatePie()"></pieChart>
             </div>
-            <br>
-            <h2>Supreme Court Overview</h2>
-            
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <partiesPage @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
         <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
