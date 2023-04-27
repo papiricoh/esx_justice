@@ -66,6 +66,25 @@ export default {
         }
       }
       return nodes;
+    },
+    toStringCheckVacants() {
+      let control = ["Leader", "Whip", "Caucus", "Whip Asistant"];
+      for (let index = 0; index < this.party.members.length; index++) {
+        if(this.party.members[index].role == "Leader") {
+          control[0] = "";
+        }else if(this.party.members[index].role == "Whip") {
+          control[1] = "";
+        }else if(this.party.members[index].role == "Caucus") {
+          control[2] = "";
+        }else if(this.party.members[index].role == "WhipA") {
+          control[3] = "";
+        }
+      }
+      let reval = "";
+      for (let index = 0; index < control.length; index++) {
+        reval += control[index] + " ";
+      }
+      return reval;
     }
   },
   components: {
@@ -86,7 +105,36 @@ export default {
         <button @click="leaveParty()">Leave party</button>
       </div>
       <div class="parties_body">
-        
+        <div v-if="getPosition() == 'Leader' && toStringCheckVacants() != '    '" class="alert_notification">
+          <div>ALERT! This roles are unasigned:</div>
+          <div>{{toStringCheckVacants()}}</div>
+        </div>
+        <div v-if="getPosition() == 'Leader'" class="parties_body_list">
+          <div class="parties_members_list_row">
+            <h4>Member</h4>
+            <h4>Role</h4>
+            <h4>Promote/Demote</h4>
+            <h4>Expel</h4>
+          </div>
+          <div class="parties_members_list_row" v-for="member in party.members">
+            <div>{{member.name}}</div>
+            <div v-if="member.role == 'Leader'" style="font-weight: bold;">{{member.role}}</div>
+            <div v-else>{{member.role}}</div>
+            <button v-if="member.id != player.id">Promote/Demote</button>
+            <button class="members_button" v-if="member.id != player.id">Expel</button>
+          </div>
+        </div>
+        <div v-else class="parties_body_list">
+          <div class="parties_members_list_row_a">
+            <h4>Member</h4>
+            <h4>Role</h4>
+          </div>
+          <div class="parties_members_list_row_a" v-for="member in party.members">
+            <div>{{member.name}}</div>
+            <div v-if="member.role == 'Leader'" style="font-weight: bold;">{{member.role}}</div>
+            <div v-else>{{member.role}}</div>
+          </div>
+        </div>
       </div>
     </div>
     <div v-else>

@@ -15,14 +15,12 @@ export default {
     return {
       loading: false,
       page: 'home',
-      player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: null },
+      player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: "KNL" },
       parties: [
         { name: "Kiwa National League", label: "KNL", color: "#822831", members: [
-          { id: "steam:21382918", name: "Leonard Jul", role: "Leader"},
-          { id: "steam:21382418", name: "KIll el Trabieso", role: "Whip"},
-          { id: "steam:213632918", name: "Unitero Lopez", role: "Caucus"},
-          { id: "steam:21743918", name: "Aki Lopez", role: "WhipA"},
+          { id: "steam:21382418", name: "Leonard Jul", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
           { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
