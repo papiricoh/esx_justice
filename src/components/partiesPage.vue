@@ -25,8 +25,17 @@ export default {
   },
   methods: {
     assignRole(role, promoteMember) {
-      if(getPosition() == 'Leader') {
-        
+      if(this.getPosition() == 'Leader') {
+        if(role == 'Whip Asistant') {
+          role = 'WhipA';
+        }
+        let members_copy = this.party.members;
+        for (let index = 0; index < members_copy.length; index++) {
+          if(members_copy[index].id == promoteMember.id) {
+            members_copy[index].role = role;
+          }
+        }
+        this.$emit('changeRoles', members_copy, this.party.label);
       }
     },
     leaveParty() {
@@ -189,9 +198,10 @@ export default {
           <div v-for="role in avariable_roles" class="role_row">
             <div class="role_row_format" v-if="role != '' && role != promoteMember.role && role != 'Leader'">
               <div style="font-weight: bold;">{{role}}</div>
-              <button @click="assignRole(role, promoteMember)">Assign</button>
+              <button @click="assignRole(role, promoteMember), promoteWindow = false">Assign</button>
             </div>
           </div>
+          <button @click="promoteWindow = false">Exit</button>
         </div>
       </div>
     </div>

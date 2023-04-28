@@ -234,6 +234,13 @@ export default {
       }
       return null;
     },
+    changeRoles(members, party_label) {
+      for (let index = 0; index < this.parties.length; index++) {
+        if(this.parties[index].label = party_label) {
+          this.parties[index].members = members;
+        }
+      }
+    },
     generateLeadership() {
       let parties_copy = JSON.parse(JSON.stringify(this.parties));
       let mayority_party = this.getMayorityParty(parties_copy);
@@ -282,7 +289,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage @joinParty="joinParty" @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <partiesPage @changeRoles="changeRoles" @joinParty="joinParty" @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
         <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
