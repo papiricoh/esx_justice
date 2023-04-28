@@ -236,7 +236,7 @@ export default {
     },
     changeRoles(members, party_label) {
       for (let index = 0; index < this.parties.length; index++) {
-        if(this.parties[index].label = party_label) {
+        if(this.parties[index].label == party_label) {
           this.parties[index].members = members;
         }
       }
