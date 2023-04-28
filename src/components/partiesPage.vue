@@ -12,7 +12,10 @@ export default {
   },
   data() {
     return {
+      avariable_roles: ["Whip", "Caucus", "WhipA", "Senator"],
       hasParty: false,
+      promoteWindow: false,
+      promoteMember: null,
     };
   },
   mounted() {
@@ -21,6 +24,11 @@ export default {
     }
   },
   methods: {
+    assignRole(role, promoteMember) {
+      if(getPosition() == 'Leader') {
+        
+      }
+    },
     leaveParty() {
       //TODO Leave party fetch
       this.$emit('leaveParty');
@@ -67,7 +75,7 @@ export default {
       }
       return nodes;
     },
-    toStringCheckVacants() {
+    checkVacants() {
       let control = ["Leader", "Whip", "Caucus", "Whip Asistant"];
       for (let index = 0; index < this.party.members.length; index++) {
         if(this.party.members[index].role == "Leader") {
@@ -80,6 +88,15 @@ export default {
           control[3] = "";
         }
       }
+      return control;
+    },
+    formatVacants() {
+      let control = this.checkVacants();
+      control[control.length] = "Senator";
+      return control;
+    },
+    toStringCheckVacants() {
+      let control = this.checkVacants();
       let reval = "";
       for (let index = 0; index < control.length; index++) {
         reval += control[index] + " ";
@@ -120,7 +137,7 @@ export default {
             <div>{{member.name}}</div>
             <div v-if="member.role == 'Leader'" style="font-weight: bold;">{{member.role}}</div>
             <div v-else>{{member.role}}</div>
-            <button v-if="member.id != player.id">Promote/Demote</button>
+            <button v-if="member.id != player.id" @click="promoteWindow = true, promoteMember = member, avariable_roles = formatVacants()">Promote/Demote</button>
             <button class="members_button" v-if="member.id != player.id">Expel</button>
           </div>
         </div>
@@ -163,6 +180,20 @@ export default {
     </div>
     <div class="parties_actions">
       <organizationChart :imported_nodes="generateImportedNodes()"></organizationChart>
+    </div>
+    <div v-if="promoteWindow" class="textEditor">
+      <div class="promote_card">
+        <div class="promote_name">{{promoteMember.name}} -- {{promoteMember.role}}</div>
+        <div>As leader you can assign different roles to your party members</div>
+        <div class="roles_list">
+          <div v-for="role in avariable_roles" class="role_row">
+            <div class="role_row_format" v-if="role != '' && role != promoteMember.role && role != 'Leader'">
+              <div style="font-weight: bold;">{{role}}</div>
+              <button @click="assignRole(role, promoteMember)">Assign</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

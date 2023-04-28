@@ -612,3 +612,35 @@ button:active {
 .alert_notification > div:first-child {
     font-weight: bold;
 }
+
+.promote_card {
+    min-height: 8rem;
+    min-width: 24rem;
+    background-color: aliceblue;
+    margin: 15%;
+    border-radius: .4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: .6rem;
+}
+
+.promote_name {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.roles_list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .4rem;
+}
+
+.role_row_format {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}

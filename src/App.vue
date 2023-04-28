@@ -19,7 +19,7 @@ export default {
       parties: [
         { name: "Kiwa National League", label: "KNL", color: "#822831", members: [
           { id: "steam:21382418", name: "Leonard Jul", role: "Senator"},
-          { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
+          { id: "steam:213632918", name: "Roger Walters", role: "Caucus"},
           { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
           { id: "steam:21382418", name: "Roger Walters", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
