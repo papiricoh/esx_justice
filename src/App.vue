@@ -130,7 +130,11 @@ export default {
               this.parties[index].members.splice(index2, 1);
             }
           }
-          this.checkPartyLeadership(this.parties[index].label);
+          if(this.parties[index].members.length < 1) {
+            this.parties.splice(index, 1); //remove party
+          }else {
+            this.checkPartyLeadership(this.parties[index].label);
+          }
         }
       }
     },
@@ -140,6 +144,7 @@ export default {
           for (let i = 0; i < this.parties[index].members.length; i++) {
             if(this.parties[index].members[i].role == "Whip") {
               this.parties[index].members[i].role = "Leader";
+              //ADD Control variable to randomice the leader asign in case of a non existent whip
             }
           }
         }
