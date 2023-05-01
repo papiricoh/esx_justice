@@ -18,7 +18,9 @@
     "@tiptap/vue-3": "^2.0.3",
     "highcharts-vue": "^1.4.0",
     "jquery": "^3.6.4",
+    "verte": "^0.0.12",
     "vue": "^3.2.47",
+    "vue-accessible-color-picker": "^4.1.2",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

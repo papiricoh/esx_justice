@@ -3,6 +3,7 @@ import organizationChart from './charts/organizationChart.vue';
 </script>
 
 <script>
+import { ColorPicker } from 'vue-accessible-color-picker';
 export default {
   props: {
     party: Object,
@@ -16,6 +17,8 @@ export default {
       hasParty: false,
       promoteWindow: false,
       promoteMember: null,
+
+      create_party_form: { name: null, label: null, ideology: "Center", color: null }
     };
   },
   mounted() {
@@ -24,6 +27,9 @@ export default {
     }
   },
   methods: {
+    updateColor(eventData) {
+      this.create_party_form.color = eventData.colors.hex
+    },
     assignRole(role, promoteMember) {
       if(this.getPosition() == 'Leader') {
         if(role == 'Whip Asistant') {
@@ -111,10 +117,14 @@ export default {
         reval += control[index] + " ";
       }
       return reval;
+    },
+    createParty(form) {
+      this.$emit('createParty', form);
+      this.hasParty = true;
     }
   },
   components: {
-    
+		ColorPicker,
   }
 };
 </script>
@@ -190,26 +200,32 @@ export default {
           <div class="parties_creator_names">
             <div>
               <label style="font-weight: bold;">Party name:</label>
-              <input type="text">
+              <input v-model="create_party_form.name" type="text">
             </div>
             <div>
               <label style="font-weight: bold;">Party label:</label>
-              <input type="text" maxlength="4">
+              <input v-model="create_party_form.label" type="text" maxlength="4">
             </div>
           </div>
           <div class="parties_creator_names">
             <div>
               <label style="font-weight: bold;">Ideology:</label>
-              <select name="" id="">
-                <option value="" disabled>Ideology</option>
-                <option value="">Far left</option>
-                <option value="">Left</option>
-                <option value="">Center</option>
-                <option value="">Right</option>
-                <option value="">Far right</option>
+              <select v-model="create_party_form.ideology" name="" id="">
+                <option value="Ideology" disabled>Ideology</option>
+                <option value="Far left">Far left</option>
+                <option value="Left">Left</option>
+                <option value="Center">Center</option>
+                <option value="Right">Right</option>
+                <option value="Far right">Far right</option>
               </select>
             </div>
           </div>
+          <div class="parties_creator_names">
+            <div>
+              <ColorPicker @color-change="updateColor"></ColorPicker>
+            </div>
+          </div>
+          <button @click="createParty(create_party_form)">Create Party</button>
         </div>
       </div>
     </div>

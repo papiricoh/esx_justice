@@ -109,7 +109,11 @@ export default {
       for (let index = 0; index < this.parties.length; index++) {
         if(this.parties[index].label == party_label) {
           this.player.party = party_label;
-          this.parties[index].members[this.parties[index].members.length] = {id: this.player.id, name: this.player.first_name + " " + this.player.last_name, role: "Senator"}
+          if(this.parties[index].members.length < 1) {
+            this.parties[index].members[this.parties[index].members.length] = {id: this.player.id, name: this.player.first_name + " " + this.player.last_name, role: "Leader"};
+          }else {
+            this.parties[index].members[this.parties[index].members.length] = {id: this.player.id, name: this.player.first_name + " " + this.player.last_name, role: "Senator"};
+          }
         }
       }
     },
@@ -250,6 +254,10 @@ export default {
 
       let minority_party = this.getMayorityParty(parties_copy);
       return { mayority: mayority_party, minority: minority_party }
+    },
+    createParty(form) {
+      this.parties[this.parties.length] = { name: form.name, label: form.label, color: form.color, ideology: form.ideology, members: [{ id: this.player.id, name: this.player.first_name + " " + this.player.last_name, role: "Leader"},]};
+      this.player.party = form.label;
     }
   },
 };
@@ -289,7 +297,7 @@ export default {
           </div>
         </div>
         <senatePage v-if="page == 'senate'" class="senate_page" :player="player" :parties="parties"></senatePage>
-        <partiesPage @changeRoles="changeRoles" @joinParty="joinParty" @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
+        <partiesPage @createParty="createParty" @changeRoles="changeRoles" @joinParty="joinParty" @leaveParty="leaveParty" v-if="page == 'parties'" class="parties_page" :player="player" :parties="parties" :party="getPlayerParty()" :leadership="generateLeadership()"></partiesPage>
         <lawsPage :laws="laws" class="laws_page" v-if="page == 'laws'"></lawsPage>
       </div>
     </div>
