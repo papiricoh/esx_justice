@@ -185,6 +185,32 @@ export default {
             <button @click="this.$emit('joinParty', list_party.label), hasParty = true">Join</button>
           </div>
         </div>
+        <div class="parties_creator_box">
+          <h3 style="text-align: center;">Party creator</h3>
+          <div class="parties_creator_names">
+            <div>
+              <label style="font-weight: bold;">Party name:</label>
+              <input type="text">
+            </div>
+            <div>
+              <label style="font-weight: bold;">Party label:</label>
+              <input type="text" maxlength="4">
+            </div>
+          </div>
+          <div class="parties_creator_names">
+            <div>
+              <label style="font-weight: bold;">Ideology:</label>
+              <select name="" id="">
+                <option value="" disabled>Ideology</option>
+                <option value="">Far left</option>
+                <option value="">Left</option>
+                <option value="">Center</option>
+                <option value="">Right</option>
+                <option value="">Far right</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="parties_actions">

@@ -78,7 +78,7 @@ main {
     color: rgb(233, 233, 233);
     background-color: rgba(45, 95, 137, 0.88);
     padding: .8rem;
-    width: 80%;
+    width: 43%;
     text-align: center;
     cursor: pointer;
     border-radius: 2rem;
@@ -398,6 +398,7 @@ button:active {
 
 .parties_body {
     padding: 2rem;
+    gap: 2rem;
 }
 
 .parties_actions {
@@ -643,4 +644,39 @@ button:active {
     align-items: center;
     justify-content: space-between;
     
+}
+
+.parties_creator_box {
+    min-width: 20rem;
+    min-height: 12rem;
+    background-color: rgb(192, 212, 238);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem 3rem;
+}
+
+.parties_creator_names {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.parties_creator_names > div {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+:focus-visible {
+    outline: 0;
+}
+
+input {
+    padding: .4rem;
+    border: 0;
+    border-radius: .4rem;
+    background-color: rgba(221,232,246, 1);
 }

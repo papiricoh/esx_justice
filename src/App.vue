@@ -17,7 +17,7 @@ export default {
       page: 'home',
       player: { id: "steam:21382918", first_name: "John", last_name: "Doe", isSenator: true, party: "KNL" },
       parties: [
-        { name: "Kiwa National League", label: "KNL", color: "#822831", members: [
+        { name: "Kiwa National League", label: "KNL", color: "#822831", ideology: "Center", members: [
           { id: "steam:21382418", name: "Leonard Jul", role: "Senator"},
           { id: "steam:213632918", name: "Roger Walters", role: "Caucus"},
           { id: "steam:21382918", name: "Roger Walters", role: "Leader"},
@@ -41,7 +41,7 @@ export default {
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
-        { name: "Gran National League", label: "GNL", color: "#789FC1", members: [
+        { name: "Gran National League", label: "GNL", color: "#789FC1", ideology: "Center", members: [
           { id: "steam:21382418", name: "Jorje el Trabieso", role: "Whip"},
           { id: "steam:213632918", name: "Pablo Lopez", role: "Caucus"},
           { id: "steam:21743918", name: "Roberto Lopez", role: "WhipA"},
@@ -65,13 +65,13 @@ export default {
           { id: "steam:213632918", name: "Roger Walters", role: "Senator"},
           { id: "steam:21743918", name: "Roger Walters", role: "Senator"},
         ]},
-        { name: "The Black Hand party", label: "BH", color: "#2832E0", members: [
+        { name: "The Black Hand party", label: "BH", color: "#2832E0", ideology: "Center", members: [
           { id: "steam:21382918", name: "Omar Montes", role: "Leader"},
           { id: "steam:21382418", name: "Don Omar", role: "Whip"},
           { id: "steam:213632918", name: "Felix Carrion", role: "Caucus"},
           { id: "steam:21743918", name: "Daddy Jankee", role: "WhipA"},
         ]},
-        { name: "Los Santos Republican League", label: "LSRL", color: "#F85552", members: [
+        { name: "Los Santos Republican League", label: "LSRL", color: "#F85552", ideology: "Center", members: [
           { id: "steam:21382918", name: "Omar Montes", role: "Leader"},
           { id: "steam:21382418", name: "Don Omar", role: "Whip"},
           { id: "steam:213632918", name: "Felix Carrion", role: "Caucus"},
