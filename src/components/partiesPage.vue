@@ -222,7 +222,7 @@ export default {
           </div>
           <div class="parties_creator_names">
             <div>
-              <ColorPicker @color-change="updateColor"></ColorPicker>
+              <ColorPicker alpha-channel="hide" :visible-formats="['hex']" @color-change="updateColor"></ColorPicker>
             </div>
           </div>
           <button @click="createParty(create_party_form)">Create Party</button>

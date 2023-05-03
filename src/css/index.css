@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
-
 * {
     font-family: 'Roboto Slab', serif;
     color: rgba(39,49,61, 1);;
@@ -687,4 +686,8 @@ select {
     border: 0;
     padding: .4rem 1rem;
     border-radius: .4rem;
+}
+
+.vacp-color-inputs{
+    display: none;
 }

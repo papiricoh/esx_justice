@@ -273,13 +273,19 @@ export default {
     <div v-if="loading"></div>
     <div class="main" v-else>
       <div class="main_menu">
-        <ul class="menu_list">
+        <ul class="menu_list" v-if="player.isSenator">
           <li class="menu_list_item menu_list_item_active" v-if="page == 'home'"><font-awesome-icon :icon="['fas', 'house']"/></li>
           <li class="menu_list_item" v-else @click="page = 'home'"><font-awesome-icon :icon="['fas', 'house']" /></li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'senate'"><font-awesome-icon icon="fa-solid fa-building-columns" /></li>
           <li class="menu_list_item" v-else @click="page = 'senate'"><font-awesome-icon icon="fa-solid fa-building-columns" /></li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'parties'"><font-awesome-icon icon="fa-solid fa-flag" /></li>
           <li class="menu_list_item" v-else @click="page = 'parties'"><font-awesome-icon icon="fa-solid fa-flag" /></li>
+          <li class="menu_list_item menu_list_item_active" v-if="page == 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
+          <li class="menu_list_item" v-else @click="page = 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
+        </ul>
+        <ul class="menu_list" v-else>
+          <li class="menu_list_item menu_list_item_active" v-if="page == 'home'"><font-awesome-icon :icon="['fas', 'house']"/></li>
+          <li class="menu_list_item" v-else @click="page = 'home'"><font-awesome-icon :icon="['fas', 'house']" /></li>
           <li class="menu_list_item menu_list_item_active" v-if="page == 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
           <li class="menu_list_item" v-else @click="page = 'laws'"><font-awesome-icon icon="fa-solid fa-book" /></li>
         </ul>
